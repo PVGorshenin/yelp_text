@@ -1,0 +1,24 @@
+{
+    "bert_params": {
+        "max_seq_len": 512,
+        "batch_size": 4,
+        "padding": true,
+        "truncation": false,
+        "device": "cuda", 
+        "model_path": "data/bert_output",
+        "weight": 1.0,
+        "name": "bert"}, 
+    "lr_params": {
+        "model_path": "",
+        "vectorizer_path": "",
+        "weight": 0,
+        "name": "lr"},
+    "xgb_params": {
+        "vectorizer_path": "",
+        "model_path": "",
+        "weight": 0,
+        "name": "xgb"}, 
+    "le_path": "",
+    "is_equal_choice": true,
+    "use_models": ["bert"],
+}
