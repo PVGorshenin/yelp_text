@@ -52,7 +52,6 @@ def predict_bert(text_or_pair_list: Union[List[str], List[Tuple[str, str]]],
                             batch_size=params['batch_size'],
                             shuffle=False)
 
-    preds = _get_preds(model, dataloader, params['device'])
-    preds = softmax(preds, axis=1)
+    preds_np = _get_preds(model, dataloader, params['device'])
 
-    return preds
+    return preds_np
