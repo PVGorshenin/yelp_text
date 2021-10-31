@@ -1,17 +1,11 @@
-import yaml
-
-
 class Predictor():
-    def __init__(self, models_dct):
-        #TODO: abspath
-        with open('config.yaml', 'rb') as file:
-            self.config = yaml.load(file)
+    def __init__(self, models_dct, config):
+        self.config = config
         self.models_dct = models_dct
 
     def _get_model_aux_params(self):
         aux_params = {
             'bert': [self.config]
-             # 'lr':  (self.stemmer, self.tokenizer, self.le)
         }
         return aux_params
 
