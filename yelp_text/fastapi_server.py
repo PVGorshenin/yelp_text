@@ -1,7 +1,8 @@
 import json
 
 from fastapi import FastAPI
-from typing import Dict, List
+from typing import  List
+from yelp_text.lib.postproc import make_response_data
 
 
 def create_fastapi_server(predictor):
@@ -12,13 +13,14 @@ def create_fastapi_server(predictor):
         return 'server awaiting'
 
     @app.post("/")
-    def handle_post(request: List[Dict[str: str]]):
+    def handle_post(request: List[str]):
         if len(request) != 0:
-            preds_lst = predictor.predict(requests)
-            # response_data = make_response_data(preds_lst)
+            preds_lst = predictor.predict(request)
+            #TODO: generalize for n models
+            response_data = make_response_data(preds_lst[0], request)
         else:
-            preds_lst = []
+            response_data = []
 
-        return json.dumps(preds_lst, ensure_ascii=False).encode('utf-8')
+        return json.dumps(response_data, ensure_ascii=False).encode('utf-8')
 
     return app
