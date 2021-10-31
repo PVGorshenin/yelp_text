@@ -11,7 +11,6 @@ setuptools.setup(
     python_requires="<3.9.0",
     install_requires=[
         "dill==0.3.3",
-        "nltk==3.4.5",
         "numpy==1.18.0",
         "pandas==0.25.3",
         "pyyaml==5.4.1",
