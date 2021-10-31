@@ -4,8 +4,8 @@
         "batch_size": 4,
         "padding": true,
         "truncation": false,
-        "device": "cuda", 
-        "model_path": "data/bert_output",
+        "device": "cpu",
+        "model_path": "data/bert_model/model_epoch7",
         "weight": 1.0,
         "name": "bert"}, 
     "lr_params": {
