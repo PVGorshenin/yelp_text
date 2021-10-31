@@ -21,6 +21,7 @@ setuptools.setup(
         "transformers==4.0.1",
         "torch==1.7.1",
         "uvicorn==0.13.4",
-        "fastapi"
+        "fastapi",
+        "gdown"
     ],
 )

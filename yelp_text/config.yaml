@@ -5,8 +5,9 @@
         "padding": true,
         "truncation": false,
         "device": "cpu",
-        "model_path": "../data/bert_model/model_epoch7",
+        "model_path": "../data/bert_model/model_epoch6",
         "model_type": "bert-base-cased",
+        "model_url": "https://drive.google.com/uc?export=download&id=1Pxxa1-ViEZPARpp3rHGEQDXdEJs2ko_3",
         "weight": 1.0,
         "name": "bert"}, 
     "lr_params": {
