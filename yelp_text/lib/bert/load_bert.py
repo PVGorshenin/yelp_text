@@ -1,21 +1,23 @@
 import torch
 
-from definitions import get_root
+from yelp_text.definitions import get_root
 from transformers import BertForSequenceClassification, BertTokenizer
 
 
 def load_bert_model_n_tokenizer(config):
     device = config['bert_params']['device']
     model_path = config['bert_params']['model_path']
+    model_type = config['bert_params']["model_type"]
+    root = get_root()
 
-    state_dict = torch.load(f'{get_root()}/{model_path}')
-    n_classes = next(reversed(state_dict.items()))[1].shape[0]
-    #TODO: hardcode to config
-    model = BertForSequenceClassification.from_pretrained('DeepPavlov/rubert-base-cased',
+    if not torch.cuda.is_available():
+        state_dict = torch.load(f'{root}/{model_path}', map_location=device)
+    else:
+        state_dict = torch.load(f'{root}/{model_path}')
+
+    model = BertForSequenceClassification.from_pretrained(model_type,
                                                           state_dict=state_dict,
-                                                          num_labels=n_classes)
-    model.to(device)
+                                                          num_labels=1)
 
-    tokenizer = BertTokenizer.from_pretrained('DeepPavlov/rubert-base-cased')
+    tokenizer = BertTokenizer.from_pretrained(model_type)
     return model, tokenizer
-

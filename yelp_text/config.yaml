@@ -6,6 +6,7 @@
         "truncation": false,
         "device": "cpu",
         "model_path": "../data/bert_model/model_epoch7",
+        "model_type": "bert-base-cased",
         "weight": 1.0,
         "name": "bert"}, 
     "lr_params": {
