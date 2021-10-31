@@ -1,30 +1,24 @@
-import dill
-import json
-import pandas as pd
+import yaml
 
 from yelp_text.lib.bert.load_bert import load_bert_model_n_tokenizer
 from yelp_text.lib.bert.predict_bert import predict_bert
-from yelp_text.lib.lr.lr import load_lr_model_n_vect
-from yelp_text.lib.lr.lr import predict_lr
-from definitions import get_root
+from yelp_text.definitions import get_root
 
 def read_config() -> dict:
     with open(f'{get_root()}/config.yaml', 'r') as f:
-        return json.load(f)
+        return yaml.load(f)
 
 
 def _get_model_loaders():
     loaders_dct = {
         'bert': load_bert_model_n_tokenizer,
-        'lr': load_lr_model_n_vect,
     }
-    return  loaders_dct
+    return loaders_dct
 
 
 def _get_model_predictors():
     predictors_dct = {
-        'bert': predict_bert,
-        'lr': predict_lr,
+        'bert': predict_bert
     }
     return predictors_dct
 
