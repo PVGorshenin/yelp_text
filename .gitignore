@@ -1,0 +1,7 @@
+venv/
+*.csv
+data/
+.idea/
+.ipynb_checkpoints/
+__pycache__/
+/yelp_text.egg-info/
