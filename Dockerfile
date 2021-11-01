@@ -10,10 +10,16 @@ RUN apt-get -y install git
 
 
 RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install 'git+https://github.com/PVGorshenin/yelp_text@main'
+RUN git clone https://github.com/PVGorshenin/yelp_text.git
 
-RUN gdown 'https://drive.google.com/uc?export=download&id=1Pxxa1-ViEZPARpp3rHGEQDXdEJs2ko_3'
-RUN mkdir data/bert_model/ && mv model_epoch6 data/bert_model/
+WORKDIR yelp_text/
+RUN python3 -m pip install -e .
+
+
+RUN mkdir -p data/bert_model/
+COPY data/bert_model/model_epoch6 data/bert_model/
+WORKDIR yelp_text/
+
 
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
