@@ -8,9 +8,10 @@ setuptools.setup(
     name="yelp_text",
     version=__version__,
     packages=setuptools.find_packages(),
-    python_requires="<3.9.0",
+    python_requires="3.7.6",
     install_requires=[
         "dill==0.3.3",
+        "fastapi==0.70.0",
         "numpy==1.18.0",
         "pandas==0.25.3",
         "pyyaml==5.4.1",
@@ -21,7 +22,5 @@ setuptools.setup(
         "transformers==4.0.1",
         "torch==1.7.1",
         "uvicorn==0.13.4",
-        "fastapi",
-        "gdown"
     ],
 )
